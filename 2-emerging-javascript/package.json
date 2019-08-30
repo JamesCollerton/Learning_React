@@ -1,0 +1,12 @@
+{
+  "name": "2-emerging-javascript",
+  "version": "1.0.0",
+  "description": "Basic ES6 Examples",
+  "main": "emerging-javascript.js",
+  "scripts": {
+    "run": "node emerging-javascript.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
