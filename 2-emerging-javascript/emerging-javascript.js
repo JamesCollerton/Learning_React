@@ -1,9 +1,19 @@
-const contantString = "Constant"
+const constantString = "Constant"
 
 function demo() {
     constantFunction()
     lexicalScopingAndTemplateStrings()
     defaultParameters()
+    arrowFunctions([1, 2, 3])
+}
+
+function arrowFunctions(arrArgument) {
+    console.log(`Sum: ${functionalSum(arrArgument)}`)
+}
+
+function functionalSum(arrArgument) {
+    sum = (a) => a.reduce((total, number) => total + number)
+    return sum(arrArgument)
 }
 
 function defaultParameters(parameter = "Parameter") {
@@ -24,7 +34,7 @@ function lexicalScopingAndTemplateStrings() {
 }
 
 function constantFunction() {
-    console.log(contantString)
+    console.log(`Constant: ${constantString}`)
 }
 
 demo()
