@@ -9,6 +9,28 @@ function demo() {
     destructuringFunctions()
     destructuringArrays()
     objectLiteralEnhancement()
+    spreadOperator()
+    spreadOperatorFunction("One", "Two", "Three")
+}
+
+function spreadOperatorFunction(...args) {
+
+    console.log(`Args: ${args.join(", ")}`)
+
+}
+
+function spreadOperator() {
+
+    let arrA = ["One", "Two", "Three"]
+    let arrB = ["Four", "Five", "Six"]
+
+    let arr = [...arrA, ...arrB]
+
+    let [first, ...rest] = arr
+    let [last] = [...rest].reverse()
+
+    console.log(`Last: ${last}`)
+
 }
 
 function objectLiteralEnhancement() {
