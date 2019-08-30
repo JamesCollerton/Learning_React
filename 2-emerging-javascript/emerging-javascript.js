@@ -5,6 +5,54 @@ function demo() {
     lexicalScopingAndTemplateStrings()
     defaultParameters()
     arrowFunctions([1, 2, 3])
+    destructuring()
+    destructuringFunctions()
+    destructuringArrays()
+    objectLiteralEnhancement()
+}
+
+function objectLiteralEnhancement() {
+    
+}
+
+function destructuringArrays() {
+
+    let arr = [1,2,3]
+
+    let [firstElement] = arr
+    let [,,thirdElement] = arr
+
+    console.log(`First element ${firstElement}`)
+    console.log(`Third element ${thirdElement}`)
+
+}
+
+function destructuringFunctions() {
+
+    let person = {
+        name: "James",
+        age: 100,
+        weight: 99 
+    }
+
+    let lordify = ({name}) => `Lord ${name}`
+
+    console.log(lordify(person))
+}
+
+function destructuring() {
+
+    let person = {
+        name: "James",
+        age: 100,
+        weight: 99 
+    }
+
+    let {name, age} = person
+
+    console.log(`Name: ${name}`)
+    console.log(`Age: ${age}`)
+
 }
 
 function arrowFunctions(arrArgument) {
