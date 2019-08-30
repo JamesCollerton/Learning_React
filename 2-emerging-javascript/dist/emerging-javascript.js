@@ -10,6 +10,25 @@ function demo() {
     destructuring();
     destructuringFunctions();
     destructuringArrays();
+    objectLiteralEnhancement();
+}
+
+function objectLiteralEnhancement() {
+
+    var name = "Bill";
+    var age = 77;
+
+    var print = function print() {
+        console.log("Name: " + this.name + ", Age: " + this.age);
+    };
+
+    var person = {
+        name: name,
+        age: age,
+        print: print
+    };
+
+    person.print();
 }
 
 function destructuringArrays() {

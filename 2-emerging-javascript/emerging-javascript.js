@@ -12,7 +12,22 @@ function demo() {
 }
 
 function objectLiteralEnhancement() {
-    
+
+    let name = "Bill"
+    let age = 77
+
+    let print = function() {
+        console.log(`Name: ${this.name}, Age: ${this.age}`)
+    }
+
+    let person = {
+        name,
+        age,
+        print
+    }
+
+    person.print()
+
 }
 
 function destructuringArrays() {
