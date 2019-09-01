@@ -12,6 +12,41 @@ function demo() {
     spreadOperator()
     spreadOperatorFunction("One", "Two", "Three")
     promiseExample()
+    classExample()
+}
+
+function classExample() {
+
+    class HiddenClass {
+
+        constructor(str) {
+            this.str = str
+        }
+        
+        print() {
+            console.log(`String ${this.str}`)
+        }
+
+    }
+
+    class ExtendedClass extends HiddenClass {
+
+        constructor(str) {
+            super(str)
+        }
+
+        print() {
+            super.print()
+        }
+
+    }
+
+    const hiddenClass = new HiddenClass("Class Input")
+    const extendedClass = new ExtendedClass("Another Class Input")
+
+    hiddenClass.print()
+    extendedClass.print()
+
 }
 
 function promiseExample() {
