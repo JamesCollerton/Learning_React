@@ -11,6 +11,24 @@ function demo() {
     objectLiteralEnhancement()
     spreadOperator()
     spreadOperatorFunction("One", "Two", "Three")
+    promiseExample()
+}
+
+function promiseExample() {
+
+    const asyncFunction = (str) => new Promise((resolves, rejects) => {
+        var millisecondsToWait = 500;
+        setTimeout(function() {
+            resolves(str)
+            rejects("Should not occur")
+        }, millisecondsToWait);
+    })
+
+    asyncFunction("World").then(
+        str => console.log(`Async Hello ${str}`),
+        err => console.log(`Error ${err}`)
+    )
+
 }
 
 function spreadOperatorFunction(...args) {

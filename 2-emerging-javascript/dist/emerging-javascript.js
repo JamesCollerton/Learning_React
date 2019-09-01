@@ -19,6 +19,26 @@ function demo() {
     objectLiteralEnhancement();
     spreadOperator();
     spreadOperatorFunction("One", "Two", "Three");
+    promiseExample();
+}
+
+function promiseExample() {
+
+    var asyncFunction = function asyncFunction(str) {
+        return new Promise(function (resolves, rejects) {
+            var millisecondsToWait = 500;
+            setTimeout(function () {
+                resolves(str);
+                rejects("Should not occur");
+            }, millisecondsToWait);
+        });
+    };
+
+    asyncFunction("World").then(function (str) {
+        return console.log("Async Hello " + str);
+    }, function (err) {
+        return console.log("Error " + err);
+    });
 }
 
 function spreadOperatorFunction() {
