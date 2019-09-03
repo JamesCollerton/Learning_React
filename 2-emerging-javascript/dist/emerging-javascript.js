@@ -16,6 +16,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+// Not supported in Node
+// import { print as importPrint } from './module-example'
+
+var _require = require('./module-example'),
+    importPrint = _require.importPrint;
+
 var constantString = "Constant";
 
 function demo() {
@@ -31,6 +37,11 @@ function demo() {
     spreadOperatorFunction("One", "Two", "Three");
     promiseExample();
     classExample();
+    importPrintExample();
+}
+
+function importPrintExample() {
+    importPrint("Import print");
 }
 
 function classExample() {

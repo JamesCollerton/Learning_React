@@ -1,3 +1,8 @@
+// Not supported in Node
+// import { print as importPrint } from './module-example'
+
+const { importPrint } = require('./module-example')
+
 const constantString = "Constant"
 
 function demo() {
@@ -13,6 +18,11 @@ function demo() {
     spreadOperatorFunction("One", "Two", "Three")
     promiseExample()
     classExample()
+    importPrintExample()
+}
+
+function importPrintExample() {
+    importPrint("Import print")
 }
 
 function classExample() {
