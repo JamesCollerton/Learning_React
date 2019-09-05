@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run": "npm run-script babel && node functional-concepts.js",
+    "es6": "node --harmony functional-concepts.js",
     "babel": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

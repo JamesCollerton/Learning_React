@@ -14,7 +14,11 @@ function immutableExample() {
         }
     }
 
-    const rename = (o, n) => Object.assign({}, o, {name: n}) 
+    const rename = (o, n) => 
+        ({
+            ...o,
+            n
+        })
 
     console.log(`New object: ${rename(immutableObject, "Jacob").string()}`)
 
