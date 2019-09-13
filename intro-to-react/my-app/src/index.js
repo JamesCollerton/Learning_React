@@ -9,6 +9,23 @@ import './index.css';
 */
 
 /*
+    This is a function component
+
+    In React, function components are a simpler way to write components that only contain a 
+    render method and don’t have their own state.
+*/
+function Square(props) {
+    return (
+        <button 
+            className="square" 
+            onClick={props.onClick}
+        >
+            {props.value}
+        </button>
+    );
+}
+
+/*
     This is a component. We use components to tell React what we want to see on the screen. When 
     our data changes, React will efficiently update and re-render our components.
 
@@ -20,40 +37,54 @@ import './index.css';
     JSX is a special syntax that makes the HTML component easier to write.
 
     React components can have state by setting this.state in their constructors.
-*/
-class Square extends React.Component {
 
+    setState is provided by React.Component
+*/
+class Board extends React.Component {
+    
     constructor(props) {
         super(props);
 
         this.state = {
-            value: null,
+          squares: Array(9).fill(null),
+          xIsNext: true
         };
     }
 
-    render() {
-        // setState is provided by React.Component
-        return (
-            <button 
-                className="square" 
-                onClick={() => this.setState({value: 'X'})}
-            >
-                {this.state.value}
-            </button>
-        );
-    }
-}
+    /*
+        Note, slice creates a copy of the array
+    */
+    handleClick(i) {
+        const squares = this.state.squares.slice();
+        if (calculateWinner(squares) || squares[i]) {
+            return;
+        }
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        this.setState({
+            squares: squares,
+            xIsNext: !this.state.xIsNext
+        });
+      }
 
-class Board extends React.Component {
     /*
         Here we take in a value and feed it through to the component as a prop
     */
     renderSquare(i) {
-        return <Square value={i} />;
+        return <Square 
+            value={this.state.squares[i]} 
+            onClick={() => this.handleClick(i)}
+        />;
     }
 
     render() {
-        const status = 'Next player: X';
+        const winner = calculateWinner(this.state.squares);
+
+        let status;
+        if (winner) {
+            status = 'Winner: ' + winner;
+        } else {
+            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        }
 
         return (
             <div>
@@ -100,3 +131,27 @@ ReactDOM.render(
     <Game />,
     document.getElementById('root')
 );
+
+// ========================================
+
+// UTILITIES
+
+function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+    return null;
+  }
